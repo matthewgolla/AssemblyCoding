@@ -1,0 +1,15 @@
+0011 0000 0000 0000       ;start program at location x3000
+
+; Setup registers
+1110 000 001001111        ;load R0 with the base address
+0110 001 000 000000       ;load R1 with the input number
+0101 010 010 100000       ;initialize R2 to 0
+
+; Algortihm
+0001 001 001 000001       ;add R1 to R1 and store in R1
+0000 001 111111110        ;go back to previous command while R1 is positive
+0001 001 001 111111       ;add -1 to R1
+0000 100 000000001        ;if R1 negative, skip ahead
+0001 010 010 100001       ;add 1 to R2
+0111 010 000 000001       ;store R2 (answer) into x3051
+1111 0000 00100101        ;halt program
